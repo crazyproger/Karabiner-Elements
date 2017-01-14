@@ -128,6 +128,49 @@ public:
         to_key_code = *key_code;
       }
     }
+    if (modifier_flag_manager_.pressed(krbn::modifier_flag::my_hyper)) {
+      switch (to_key_code) {
+      case krbn::key_code::i:
+        to_key_code = krbn::key_code::home;
+        break;
+      case krbn::key_code::o:
+	      to_key_code = krbn::key_code::page_up;
+	      break;
+      case krbn::key_code::j:
+        to_key_code = krbn::key_code::left_arrow;
+        break;
+      case krbn::key_code::k:
+	      to_key_code = krbn::key_code::up_arrow;
+	      break;
+      case krbn::key_code::l:
+	      to_key_code = krbn::key_code::down_arrow;
+	      break;
+      case krbn::key_code::semicolon:
+	      to_key_code = krbn::key_code::right_arrow;
+	      break;
+      case krbn::key_code::m:
+	      to_key_code = krbn::key_code::delete_forward;
+	      break;
+      case krbn::key_code::comma:
+	      to_key_code = krbn::key_code::end;
+	      break;
+      case krbn::key_code::period:
+	      to_key_code = krbn::key_code::page_down;
+	      break;
+      default:
+        break;
+      }
+    }
+
+	if(to_key_code == krbn::key_code::my_hyper) {
+		auto operation = pressed ? manipulator::modifier_flag_manager::operation::lock : manipulator::modifier_flag_manager::operation::unlock;
+
+		auto modifier_flag = krbn::types::get_modifier_flag(to_key_code);
+		if (modifier_flag != krbn::modifier_flag::zero) {
+			modifier_flag_manager_.manipulate(modifier_flag, operation);
+			return;
+		}
+	}
 
     // ----------------------------------------
     // modify fn+arrow, function keys

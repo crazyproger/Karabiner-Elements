@@ -21,6 +21,7 @@ public:
     states_[static_cast<size_t>(krbn::modifier_flag::right_option)] = std::make_unique<state>("option", "⌥");
     states_[static_cast<size_t>(krbn::modifier_flag::right_command)] = std::make_unique<state>("command", "⌘");
     states_[static_cast<size_t>(krbn::modifier_flag::fn)] = std::make_unique<state>("fn", "fn");
+    states_[static_cast<size_t>(krbn::modifier_flag::my_hyper)] = std::make_unique<state>("my_hyper", "my_hyper");
   }
 
   void reset(void) {

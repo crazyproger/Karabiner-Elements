@@ -128,6 +128,17 @@ enum class key_code : uint32_t {
   apple_display_brightness_increment,
   apple_top_case_display_brightness_decrement,
   apple_top_case_display_brightness_increment,
+
+    i = kHIDUsage_KeyboardI, // Home
+    o = kHIDUsage_KeyboardO, // PgUp
+    j = kHIDUsage_KeyboardJ, // Left
+    k = kHIDUsage_KeyboardK, // Up
+    l = kHIDUsage_KeyboardL, // Down
+    semicolon = kHIDUsage_KeyboardSemicolon, // Right
+    m = kHIDUsage_KeyboardM, // forward_delete
+    comma = kHIDUsage_KeyboardComma, // End
+    period = kHIDUsage_KeyboardPeriod, // PgDown
+    my_hyper,
 };
 
 enum class pointing_button : uint32_t {
@@ -193,6 +204,7 @@ enum class modifier_flag : uint32_t {
   right_option,
   right_command,
   fn,
+  my_hyper,
   prepared_modifier_flag_end_
 };
 
@@ -264,6 +276,8 @@ public:
       return modifier_flag::right_command;
     case static_cast<uint32_t>(key_code::fn):
       return modifier_flag::fn;
+    case static_cast<uint32_t>(key_code::my_hyper):
+      return modifier_flag::my_hyper;
     default:
       return modifier_flag::zero;
     }
@@ -447,6 +461,7 @@ public:
         {"vk_none", key_code::vk_none},
 
         {"fn", key_code::fn},
+        {"my_hyper", key_code::my_hyper},
         {"display_brightness_decrement", key_code::display_brightness_decrement},
         {"display_brightness_increment", key_code::display_brightness_increment},
         {"mission_control", key_code::mission_control},
