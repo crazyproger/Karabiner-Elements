@@ -105,6 +105,7 @@ enum class key_code : uint32_t {
   mute = kHIDUsage_KeyboardMute,
   volume_decrement = kHIDUsage_KeyboardVolumeDown,
   volume_increment = kHIDUsage_KeyboardVolumeUp,
+  grave = kHIDUsage_KeyboardGraveAccentAndTilde,
 
   // 0x1000 - are karabiner own virtual key codes or keys not in keyboard_or_keypad usage page.
   extra_ = 0x1000,
@@ -336,7 +337,7 @@ public:
         {"non_us_pound", key_code(kHIDUsage_KeyboardNonUSPound)},
         {"semicolon", key_code(kHIDUsage_KeyboardSemicolon)},
         {"quote", key_code(kHIDUsage_KeyboardQuote)},
-        {"grave_accent_and_tilde", key_code(kHIDUsage_KeyboardGraveAccentAndTilde)},
+        {"grave_accent_and_tilde", key_code::grave},
         {"comma", key_code(kHIDUsage_KeyboardComma)},
         {"period", key_code(kHIDUsage_KeyboardPeriod)},
         {"slash", key_code(kHIDUsage_KeyboardSlash)},

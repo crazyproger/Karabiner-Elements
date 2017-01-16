@@ -162,14 +162,11 @@ public:
       }
     }
 
-	if(to_key_code == krbn::key_code::my_hyper) {
+	if(to_key_code == krbn::key_code::grave) {
 		auto operation = pressed ? manipulator::modifier_flag_manager::operation::lock : manipulator::modifier_flag_manager::operation::unlock;
 
-		auto modifier_flag = krbn::types::get_modifier_flag(to_key_code);
-		if (modifier_flag != krbn::modifier_flag::zero) {
-			modifier_flag_manager_.manipulate(modifier_flag, operation);
-			return;
-		}
+		modifier_flag_manager_.manipulate(krbn::modifier_flag::my_hyper, operation);
+		return;
 	}
 
     // ----------------------------------------
