@@ -10,6 +10,7 @@
 #include "system_preferences.hpp"
 #include "types.hpp"
 #include "virtual_hid_device_client.hpp"
+#include "../../../../share/types.hpp"
 #include <IOKit/hidsystem/ev_keymap.h>
 #include <boost/optional.hpp>
 #include <list>
@@ -128,6 +129,13 @@ public:
         to_key_code = *key_code;
       }
     }
+
+    if(from_key_code == krbn::key_code::grave) {
+        auto operation = pressed ? manipulator::modifier_flag_manager::operation::lock : manipulator::modifier_flag_manager::operation::unlock;
+        modifier_flag_manager_.manipulate(krbn::modifier_flag::my_hyper, operation);
+        return;
+    }
+
     if (modifier_flag_manager_.pressed(krbn::modifier_flag::my_hyper)) {
       switch (to_key_code) {
       case krbn::key_code::i:
@@ -161,13 +169,6 @@ public:
         break;
       }
     }
-
-	if(to_key_code == krbn::key_code::grave) {
-		auto operation = pressed ? manipulator::modifier_flag_manager::operation::lock : manipulator::modifier_flag_manager::operation::unlock;
-
-		modifier_flag_manager_.manipulate(krbn::modifier_flag::my_hyper, operation);
-		return;
-	}
 
     // ----------------------------------------
     // modify fn+arrow, function keys
